@@ -1,7 +1,7 @@
-public class Person {
-    private String name;
-    private String gender;
-    private int age;
+public abstract class Person {
+    protected String name;
+    protected String gender;
+    protected int age;
 
     public Person() {
 
