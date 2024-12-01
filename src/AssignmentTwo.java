@@ -2,10 +2,11 @@ public class AssignmentTwo {
     public static void main(String[] args) {
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree();
+        assignment.partFourA();
     }
 
     public void partThree(){
-        Employee rideOperator1 = new Employee("John Doe", "Male", 30, "001", "Operator");
+        Employee rideOperator1 = new Employee("John", "Male", 30, "001", "Operator");
         Ride ride1 = new Ride("Roller Coaster", 2, rideOperator1);
 
         Visitor visitor1 = new Visitor("Nehemia", "Female", 25, 1001, true);
@@ -28,7 +29,29 @@ public class AssignmentTwo {
     }
 
     public void partFourA(){
+        Employee rideOperator2 = new Employee("Billy", "Male", 21, "002", "Manager");
+        Ride ride2 = new Ride("Thunderstorm", 4, rideOperator2);
+
+        Visitor visitor1 = new Visitor("Tom", "Male", 25, 2001, true);
+        Visitor visitor2 = new Visitor("Sherly", "Female", 30, 2002, false);
+        Visitor visitor3 = new Visitor("Ben", "Male", 22, 2003, true);
+        Visitor visitor4 = new Visitor("David", "Male", 27, 2004, false);
+        Visitor visitor5 = new Visitor("Jack", "Male", 35, 2005, true);
+
+        ride2.addVisitorToHistory(visitor1);
+        ride2.addVisitorToHistory(visitor2);
+        ride2.addVisitorToHistory(visitor3);
+        ride2.addVisitorToHistory(visitor4);
+        ride2.addVisitorToHistory(visitor5);
+
+        Visitor visitorToCheck = new Visitor("Lee", "Male", 40, 2006, true);
+        boolean isVisitorInHistory = ride2.checkVisitorFromHistory(visitorToCheck);
+        System.out.println("Is " + visitorToCheck.getName() + " in the ride history? " + isVisitorInHistory);
+        System.out.println("Number of visitors in the ride history: " + ride2.numberOfVisitors());
+
+        ride2.printRideHistory();
     }
+
     public void partFourB(){
     }
     public void partFive(){
