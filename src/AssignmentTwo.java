@@ -3,6 +3,7 @@ public class AssignmentTwo {
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree();
         assignment.partFourA();
+        assignment.partFourB();
     }
 
     public void partThree(){
@@ -31,7 +32,7 @@ public class AssignmentTwo {
     public void partFourA(){
         Employee rideOperator2 = new Employee("Billy", "Male", 21, "002", "Manager");
         Ride ride2 = new Ride("Thunderstorm", 4, rideOperator2);
-
+        
         Visitor visitor1 = new Visitor("Tom", "Male", 25, 2001, true);
         Visitor visitor2 = new Visitor("Sherly", "Female", 30, 2002, false);
         Visitor visitor3 = new Visitor("Ben", "Male", 22, 2003, true);
@@ -53,7 +54,32 @@ public class AssignmentTwo {
     }
 
     public void partFourB(){
+        Employee rideOperator2 = new Employee("Billy", "Male", 21, "002", "Manager");
+        Ride ride2 = new Ride("Thunderstorm", 4, rideOperator2);
+
+        Visitor visitor1 = new Visitor("Tom", "Male", 25, 2001, true);
+        Visitor visitor2 = new Visitor("Sherly", "Female", 30, 2002, false);
+        Visitor visitor3 = new Visitor("Ben", "Male", 22, 2003, true);
+        Visitor visitor4 = new Visitor("David", "Male", 27, 2004, false);
+        Visitor visitor5 = new Visitor("Jack", "Male", 35, 2005, true);
+
+        ride2.addVisitorToHistory(visitor1);
+        ride2.addVisitorToHistory(visitor2);
+        ride2.addVisitorToHistory(visitor3);
+        ride2.addVisitorToHistory(visitor4);
+        ride2.addVisitorToHistory(visitor5);
+    
+        System.out.println("Visitors before sorting:");
+        ride2.printRideHistory();
+    
+        VisitorComparator comparator = new VisitorComparator();
+    
+        ride2.sortRideHistory(comparator);
+    
+        System.out.println("Visitors after sorting:");
+        ride2.printRideHistory();
     }
+
     public void partFive(){
     }
     public void partSix(){

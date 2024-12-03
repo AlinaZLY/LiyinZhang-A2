@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -85,4 +86,9 @@ public class Ride {
             System.out.println(visitor.getName() + " (ID: " + visitor.getVisitorId() + ", Member: " + visitor.isMember() + ", Age: " + visitor.getAge() + ")");
         }
     }
+
+    public void sortRideHistory(VisitorComparator comparator) {
+        Collections.sort(rideHistory, comparator);
+    }
+
 }
