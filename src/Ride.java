@@ -5,22 +5,23 @@ import java.util.Queue;
 
 public class Ride {
     private String rideName;
-    private int maxPassengers;
+    private int maxRider;
     private Employee rideOperator;
     private Queue<Visitor> visitorQueue;
     private LinkedList<Visitor> rideHistory;
-
+    private int numOfCycles;
 
     public Ride() {
         
     }
 
-    public Ride(String rideName, int maxPassengers, Employee rideOperator) {
+    public Ride(String rideName, int maxRider, Employee rideOperator) {
         this.rideName = rideName;
-        this.maxPassengers = maxPassengers;
+        this.maxRider = maxRider;
         this.rideOperator = rideOperator;
         visitorQueue = new LinkedList<>();
         rideHistory = new LinkedList<>();
+        this.numOfCycles = 0;
     }
 
     public String getRideName() {
@@ -30,11 +31,11 @@ public class Ride {
         this.rideName = rideName;
     }
 
-    public int getMaxPassengers() {
-        return maxPassengers;
+    public int getMaxRider() {
+        return maxRider;
     }
-    public void setMaxPassengers(int maxPassengers) {
-        this.maxPassengers = maxPassengers;
+    public void setMaxRider(int maxRider) {
+        this.maxRider = maxRider;
     }
 
     public Employee getRideOperator() {
@@ -89,6 +90,30 @@ public class Ride {
 
     public void sortRideHistory(VisitorComparator comparator) {
         Collections.sort(rideHistory, comparator);
+    }
+
+    public void RunOneCycle() {
+        if (rideOperator == null) {
+            System.out.println("Cannot run the ride. No ride operator assigned.");
+            return;
+        }
+
+        if (visitorQueue.isEmpty()) {
+            System.out.println("Cannot run the ride. No visitors in the queue.");
+            return;
+        }
+
+        System.out.println("Running one cycle of the ride " + rideName + "...");
+        int numVisitorsToTake = Math.min(maxRider, visitorQueue.size());
+        
+        for (int i = 0; i < numVisitorsToTake; i++) {
+            Visitor visitor = visitorQueue.poll();
+            rideHistory.add(visitor);
+            System.out.println("Visitor " + visitor.getName() + " has been taken for the ride.");
+        }
+
+        numOfCycles++;
+        System.out.println("Ride cycle completed. " + numVisitorsToTake + " visitors taken for the ride " + rideName + ".");
     }
 
 }

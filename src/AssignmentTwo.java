@@ -4,6 +4,7 @@ public class AssignmentTwo {
         assignment.partThree();
         assignment.partFourA();
         assignment.partFourB();
+        assignment.partFive();
     }
 
     public void partThree(){
@@ -81,7 +82,26 @@ public class AssignmentTwo {
     }
 
     public void partFive(){
+        Employee rideOperator1 = new Employee("John", "Male", 30, "001", "Operator");
+        Ride ride1 = new Ride("Roller Coaster", 2, rideOperator1);
+
+        for (int i = 1; i <= 5; i++) {
+            Visitor visitor = new Visitor("Visitor" + i, "Male", 25 + i, 1006 + i, true);
+            ride1.addVisitorToQueue(visitor);
+        }
+    
+        System.out.println("Visitors in the queue:");
+        ride1.printQueue();
+    
+        ride1.RunOneCycle();
+    
+        System.out.println("Visitors in the queue after one cycle:");
+        ride1.printQueue();
+    
+        System.out.println("Visitors in the ride history:");
+        ride1.printRideHistory();
     }
+
     public void partSix(){
     }
     public void partSeven(){
