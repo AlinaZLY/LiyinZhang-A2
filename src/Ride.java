@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -114,6 +117,18 @@ public class Ride {
 
         numOfCycles++;
         System.out.println("Ride cycle completed. " + numVisitorsToTake + " visitors taken for the ride " + rideName + ".");
+    }
+
+    public void exportRideHistory(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (Visitor visitor : rideHistory) {
+                writer.write(visitor.toString());
+                writer.newLine();
+            }
+            System.out.println("Ride history exported to the file: " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error occurred while exporting ride history to file: " + e.getMessage());
+        }
     }
 
 }

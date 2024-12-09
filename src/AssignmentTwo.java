@@ -5,6 +5,7 @@ public class AssignmentTwo {
         assignment.partFourA();
         assignment.partFourB();
         assignment.partFive();
+        assignment.partSix();
     }
 
     public void partThree(){
@@ -103,7 +104,18 @@ public class AssignmentTwo {
     }
 
     public void partSix(){
+        Employee rideOperator1 = new Employee("John", "Male", 30, "001", "Operator");
+        Ride ride1 = new Ride("Roller Coaster", 2, rideOperator1);
+        
+        for (int i = 1; i <= 5; i++) {
+            Visitor visitor = new Visitor("Visitor" + i, "Male", 25 + i, 1006 + i, true);
+            ride1.addVisitorToHistory(visitor);
+        }
+        
+        ride1.exportRideHistory("ride_history.txt");
     }
+
     public void partSeven(){
+
     }
     }
