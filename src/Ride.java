@@ -1,9 +1,12 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class Ride {
@@ -122,12 +125,30 @@ public class Ride {
     public void exportRideHistory(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Visitor visitor : rideHistory) {
-                writer.write(visitor.toString());
+                writer.write(visitor.getName() + "," + visitor.getGender() + "," + visitor.getAge() + "," + visitor.getVisitorId() + "," + visitor.isMember());
                 writer.newLine();
             }
             System.out.println("Ride history exported to the file: " + fileName);
         } catch (IOException e) {
             System.err.println("Error occurred while exporting ride history to file: " + e.getMessage());
+        }
+    }
+
+    public LinkedList<Visitor> getRideHistory() {
+        return rideHistory;
+    }
+
+    public void importRideHistory(String fileName) {
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(fileName));
+            for (String line : lines) {
+                String[] parts = line.split(",");
+                Visitor visitor = new Visitor(parts[0], parts[1], Integer.parseInt(parts[2]), Integer.parseInt(parts[3]), Boolean.parseBoolean(parts[4]));
+                rideHistory.add(visitor);
+            }
+            System.out.println("Ride history imported from the file: " + fileName);
+        } catch (IOException | ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            System.err.println("Error occurred while importing ride history from file: " + e.getMessage());
         }
     }
 

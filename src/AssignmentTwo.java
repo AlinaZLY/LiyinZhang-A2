@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class AssignmentTwo {
     public static void main(String[] args) {
         AssignmentTwo assignment = new AssignmentTwo();
@@ -6,6 +8,7 @@ public class AssignmentTwo {
         assignment.partFourB();
         assignment.partFive();
         assignment.partSix();
+        assignment.partSeven();
     }
 
     public void partThree(){
@@ -107,15 +110,37 @@ public class AssignmentTwo {
         Employee rideOperator1 = new Employee("John", "Male", 30, "001", "Operator");
         Ride ride1 = new Ride("Roller Coaster", 2, rideOperator1);
         
-        for (int i = 1; i <= 5; i++) {
-            Visitor visitor = new Visitor("Visitor" + i, "Male", 25 + i, 1006 + i, true);
-            ride1.addVisitorToHistory(visitor);
-        }
+        Visitor visitor1 = new Visitor("Nehemia", "Female", 25, 1001, true);
+        Visitor visitor2 = new Visitor("Jason", "Male", 30, 1002, false);
+        Visitor visitor3 = new Visitor("Jack", "Male", 22, 1003, true);
+        Visitor visitor4 = new Visitor("Sharon", "Female", 27, 1004, false);
+        Visitor visitor5 = new Visitor("Benny", "Male", 35, 1005, true);
+        Visitor visitor6 = new Visitor("Leo", "Male", 17, 1006, false);
+
+        ride1.addVisitorToHistory(visitor1);
+        ride1.addVisitorToHistory(visitor2);
+        ride1.addVisitorToHistory(visitor3);
+        ride1.addVisitorToHistory(visitor4);
+        ride1.addVisitorToHistory(visitor5);
+        ride1.addVisitorToHistory(visitor6);
         
         ride1.exportRideHistory("ride_history.txt");
     }
 
     public void partSeven(){
+        Employee rideOperator1 = new Employee("John", "Male", 30, "001", "Operator");
+        Ride ride1 = new Ride("Roller Coaster", 2, rideOperator1);
 
+        ride1.importRideHistory("ride_history.txt");
+
+        LinkedList<Visitor> rideHistory = ride1.getRideHistory(); 
+        
+        System.out.println("Number of Visitors in the LinkedList: " + ride1.getRideHistory().size());
+        
+        System.out.println("Visitors in the LinkedList:");
+        
+        for (Visitor visitor : ride1.getRideHistory()) {
+            System.out.println(visitor);
+        }
     }
     }

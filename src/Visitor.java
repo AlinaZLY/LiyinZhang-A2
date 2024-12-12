@@ -27,4 +27,6 @@ public class Visitor extends Person {
     public void setMember(boolean member) {
         this.member = member;
     }
+
+
 }
