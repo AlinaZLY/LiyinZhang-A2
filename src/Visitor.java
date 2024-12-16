@@ -28,5 +28,7 @@ public class Visitor extends Person {
         this.member = member;
     }
 
-
+    public String toString() {
+        return name + "," + gender + "," + age + "," + visitorId + "," + m;
+    }
 }
